@@ -3,6 +3,7 @@ import React from 'react';
 import { JsonLd, JsonLdProps } from './jsonld';
 import { setAuthor } from 'src/utils/schema/setAuthor';
 import { setPublisher } from 'src/utils/schema/setPublisher';
+import type { Author } from 'src/types';
 
 export interface ArticleJsonLdProps extends JsonLdProps {
   type?: 'Article' | 'Blog' | 'NewsArticle';
@@ -11,7 +12,8 @@ export interface ArticleJsonLdProps extends JsonLdProps {
   images: ReadonlyArray<string>;
   datePublished: string;
   dateModified?: string;
-  authorName: string | string[];
+  authorName?: string | string[];
+  author?: Author | Author[];
   description: string;
   publisherName?: string;
   publisherLogo?: string;
@@ -26,10 +28,13 @@ function ArticleJsonLd({
   datePublished,
   dateModified,
   authorName,
+  author,
   publisherName = undefined,
   publisherLogo = undefined,
   description,
 }: ArticleJsonLdProps) {
+
+  console.log({ author, authorName })
   const data = {
     datePublished,
     description,
@@ -40,9 +45,11 @@ function ArticleJsonLd({
     headline: title,
     image: images,
     dateModified: dateModified || datePublished,
-    author: setAuthor(authorName),
+    author: setAuthor(author || authorName),
     publisher: setPublisher(publisherName, publisherLogo),
   };
+  console.log({data})
+
   return (
     <JsonLd
       type={type}

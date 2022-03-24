@@ -326,6 +326,7 @@ export type ReviewRating = {
 export type Author = {
   type: string;
   name: string;
+  sameAs?: string | string[];
 };
 
 export type Publisher = {

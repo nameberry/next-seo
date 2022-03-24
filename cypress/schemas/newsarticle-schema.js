@@ -46,6 +46,10 @@ const author100 = {
         type: 'string',
         description: 'Name of the author',
       },
+      sameAs: {
+        type: ['string', 'array'],
+        description: "sameAs"
+      }
     },
     required: true,
     additionalProperties: false,
