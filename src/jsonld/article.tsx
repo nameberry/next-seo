@@ -33,8 +33,6 @@ function ArticleJsonLd({
   publisherLogo = undefined,
   description,
 }: ArticleJsonLdProps) {
-
-  console.log({ author, authorName })
   const data = {
     datePublished,
     description,
@@ -48,7 +46,6 @@ function ArticleJsonLd({
     author: setAuthor(author || authorName),
     publisher: setPublisher(publisherName, publisherLogo),
   };
-  console.log({data})
 
   return (
     <JsonLd

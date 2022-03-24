@@ -39,8 +39,6 @@ function NewsArticleJsonLd({
   body,
   ...rest
 }: NewsArticleJsonLdProps) {
-
-  console.error({author, authorName})
   const data = {
     ...rest,
     mainEntityOfPage: {
@@ -58,7 +56,6 @@ function NewsArticleJsonLd({
     articleBody: body,
   };
 
-  console.warn({data})
   return (
     <JsonLd
       type={type}
